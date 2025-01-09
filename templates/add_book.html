@@ -1,15 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  </head>
-  <body>
+{% extends 'base.html' %}
 
-  <form action="/add_author" method="POST">
-  <!-- Add the form here -->
-  </form>
+{% block content %}
+<h1>Add Book</h1>
 
-  </body>
-</html>
+<form method="POST" action="{{ url_for('add_book') }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.title.label }}<br>
+        {{ form.title(size=32) }}<br>
+        {{ form.isbn.label }}<br>
+        {{ form.isbn(size=13) }}<br>
+        {{ form.author.label }}<br>
+        {{ form.author() }}<br>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}
