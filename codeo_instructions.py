@@ -223,37 +223,102 @@ with app.app_context():
 🛫  You only need to run this code once, you can put it at the bottom of your file and then comment it out once you've run it.
 
 
-🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                        🛫_Step 4: Create your library 📚_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
 
 
-🛫 
+🛫  With the tables set up, let's now turn our attentin to the backend Flask routes. They will define the logic for adding authors
+    and books to our library.
 
 
-🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                            🛫_👩‍🎓 Add authors_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
 
 
-🛫 
+🛫  Before we can start adding books to the library, which is the ultimate goal, we need first to add their authors to the authors table
+    because of the Foreign Key relationship.
 
 
-🛫 
+🛫  First import your data models in the imports section of app.py.
 
 
-🛫 
+🛫  Create a Flask route called '/add_author' that renders the 'add_authors.html' form used to gather information about an author
+    when a GET request comes in, and adds a new author record to the database using SQLAlchemy when a POST request comes in.
+    When a new author has successfully been added to the database, a success message should be displayed on the '/add_author' page.
 
 
-🛫 
+🛫  Note that becausse you created an autoincrementing Primary Key for the 'id' column of the 'Author' mode, you don't need to show
+    a text field in the form for the user to insert their own author 'id'.
+
+                                    🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕
+    
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                        🛫_🆕 Add books_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+                                    🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕🆕
+
+                                    
+🛫  Now that we have a way to add authors, we can add books!
 
 
-🛫 
+🛫  Create a Flask route called '/add_book' that renders a form in 'add_book.html' used to gather information about a book when a GET
+    request comes in, and adds a new book record to the database when a POST request comes in.
 
 
-🛫 
+🛫  You will need to add the necessary code to 'templates/add_book.html'. You can use the code your wrote for 'templates/add_author'
+    as a guide. Add a dropdown menu so the user can select an author from a list of authors that have already been saved to the db.
 
 
-🛫 
+🛫  Remember to show a success message on the '/add_book' page when a new book has successfully been added to the db.
 
 
-🛫 
+🛫  Hint: You can use the Flask route you created for the '/add_book' page when a new book has successfully been added to the db.
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                            🛫_🏡 Home page_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Create a Flask route for the home pag that queries the Book table and returns:
+
+        1.  The 'render_template()' function for the 'home.html' template.
+
+        2.  The books data returned by the database query, in a format the jinja code in the HTML file expects.
+
+
+🛫  Enhance your homepage
+
+        >>> Next to the book's title, also display its author. This is really easy using SQLAlchemy, because the 'Book' and the 
+            'Author' models are connected.
+
+        >>> Display each book's cover image alongside the book title. You could obtain the image using the ISBN and any external 
+            API you would like to use. 
+
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                        🛫_🌼 Seed some data_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Now that you have the 'Author' and 'Book' tables established, add 5-10 authors using your '/add_author' route, then 5-10 books
+    using your '/add_book' route.
+
+
+🛫  Did they apper as expected on your Home page?
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                            🛫_Enable Sorting_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Create a way for the books shown on the home page to be sorted. You could add buttons or a dropdown to your HTML file, and/or
+    a new Flask route that handles sorting the books. At a minimum, the books should be sortable by 'title' and by 'author_name'.
 
 
 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
@@ -276,19 +341,9 @@ with app.app_context():
 🛫 
 
 
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+🛫__🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
 
 
 🛫 
