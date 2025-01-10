@@ -3,18 +3,25 @@
 {% block content %}
 <h1>Books in Library</h1>
 
-<div>
-    <a href="{{ url_for('home', sort_by='title') }}">Sort by Title</a> |
-    <a href="{{ url_for('home', sort_by='author') }}">Sort by Author</a>
-</div>
+<!-- Sort Links -->
+ <div class="mb-3">
+    <a href="{{ url_for('home', sort_by='title') }}" class="btn btn-outline-primary">Sort by Title></a>
+    <a href="{{ url_for('home', sort_by='author') }}" class="btn btn-outline-primary">Sort by Author></a>
+ </div>
 
-<ul>
+ <!-- Book Links -->
+  <div class="row">
     {% for book in books %}
-    <li>
-        <strong>{{ book.title }}</strong> by {{ book.author.name }}<br>
-        <img src="{{ book.cover_url }}" alt="Cover Image" style="width:100px;"><br>
-        ISBN: {{ book.isbn }}
-    </li>
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            <img src="{{ book.cover_url }}" alt="Cover Image" class="card-img-top" style="width:100px; height:auto;">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <p class="card-text">By {{ book.author.name }}</p>
+                <p class="card-text">ISBN: {{ book.isbn }}</p>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
-{% endblock %}
+  </div>
+  {% endblock %}

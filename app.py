@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from data_models import db, Author, Book
-from forms import AddAuthorForm, AddBookForm
+from forms import AddAuthorForm, AddBookForm, RateBookForm
 from utils import fetch_book_cover
+import openai
 
 
 app = Flask(__name__)
@@ -19,7 +20,7 @@ def add_author():
         db.session.commit()
         flash('Author added successfully!', 'success')
         return redirect(url_for('add_author'))
-    return render_template('add_author_html', form=form)
+    return render_template('add_author.html', form=form)
 
 
 # Route to add a book
@@ -28,12 +29,13 @@ def add_book():
     form = AddBookForm()
     form.author.choices = [(author.id, author.name) for author in Author.query.all()]
     if form.validate_on_submit():
-        cover_url = fetch_book_cover(form.isbn.data) # Get cover image from external API
+        cover_url = fetch_book_cover(form.isbn.data)
         new_book = Book(
-            title=form.title.data, 
+            title = form.title.data,
             isbn=form.isbn.data,
             cover_url=cover_url,
-            author_id=form.author.data
+            author_id=form.author.data,
+            publication_year=form.publication_year.data
         )
         db.session.add(new_book)
         db.session.commit()
@@ -45,7 +47,7 @@ def add_book():
 # Route to display books on the home page
 @app.route('/')
 def home():
-    sort_by = request.args.get('sort_by', 'title') # Default sort by title
+    sort_by = request.args.get('sort_by', 'tilte')
     if sort_by == 'author':
         books = Book.query.join(Author).order_by(Author.name).all()
     else:
@@ -53,5 +55,52 @@ def home():
     return render_template('home.html', books=books)
 
 
-if __name__ == "__main__":
+# Route to view book details
+@app.route('/book/<int:book_id>')
+def book_detail(book_id):
+    book = Book.query.get_or_404(book_id)
+    form = RateBookForm()
+    return render_template('book_detail.html', book=book, form=form)
+
+
+# Route to rate a book
+@app.route('/book/<id:book_id>/rate', methods=['POST'])
+def rate_book(book_id):
+    book = Book.query.get_or_404(book_id)
+    form = RateBookForm()
+    if form.validate_on_submitt():
+        book.rating = form.rating.data
+        db.session.commit()
+        flash('Rating submitted!' 'success')
+    return redirect(url_for('home'))
+
+
+# Route to delete an author
+@app.route('/author/<int:author_id>/delete', methods=['POST'])
+def delete_author(author_id):
+    author = Author.query.get_or_404(author_id)
+    db.session.delete(author)
+    db.session.commit()
+    flash(f'Author {author.name} and all their books deleted!', 'success')
+    return redirect(url_for('home'))
+
+
+# Route for AI-based book recommendation
+@app.route('/recommend')
+def recommend():
+    books = Book.query.all()
+    book_titles = [book.title for book in books]
+    recommendation = get_book_recommendation(book_title)
+    return render_template('recommend.html', recommendation=recommendation)
+
+
+def get_book_recommendation(book_titles):
+    openai.api_key = app.comfig('OPENAI_API_KEY')
+    prompt = f"Based on the following books: {','.join(book_titles)}, recommend a book."
+    response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=50)
+    return response.choices[0].text.strip()
+
+
+if __name__ == "__main__";
     app.run(host='0.0.0.0', port=5005, debug=True)
+        

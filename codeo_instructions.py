@@ -322,83 +322,148 @@ with app.app_context():
 
 
 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                            🛫_Step 5: Keyword Search_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+        Keyword Search 📚
+
+        >>> Let's add the ability to search our 'Book' table for a word or phrase, like in the case where we want to 
+            display a specific book without having to scroll through all the books in order to find it.
+
+        >>> Add a small text field form to your 'home.html' template. Clicking the "Search" button (which you will also 
+            need to add) should cause the Flask route to run a query using 'flask_sqlalchemy' that uses the text input
+            in the HTML form as a string query in the 'flask_sqlalchemy' query. This is aikin to using the 'LIKE' 
+            keyword in SQL.
+
+        >>> The Flask route should either render all the books that meet the search criteria, or it should somehow
+            display a message that says there were no books that match the search criteria.
+
+            
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                            🛫_Step 6: Time to donate? ♻_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  No one carries a book around with them forever. We eventually need to let go of some of our books, and gifting them
+    to others or donating them to your local library are great options for downsizing your library!
+    Whenb you give away books, you'll need to remove them from your digital library.
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                            🛫_❎ Delete a Book_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Create a route called '/book/<int:book_id>/delete' which deletes a specific book from the db. when a POST request
+    comes in. Redirect the user to the homepage (the "Library") after a successful deletion, and display a success 
+    message indicating that the deletion of the book worked as required.
+
+
+🛫  Add a "Delete Book" button to 'home.html', so a user can easily delete a book from the homepage. If the book's author
+    doesn't have any other books in your library, you can also delete the author from your db.
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                                🛫_Bonus ✨_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Woo hoo, you did it! 🌟 You created a Flask application and connected it to a SQLite database 
+    using SQLAlchemy!
+
+
+🛫  Here are some fun bonus exercises you can complete if you’d like to extend the capabilities 
+    of your library application. You can do one, some, or all of them.
+
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                🛫Bonus #1 - Use ChatGPT to Redesign the UI 🤖__🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  In the recent live codeint session with your Schoolmaster, you learned about using ChatGfPT to redesign the UI
+    of a website. Implement what you learned on your digital library app.
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                        🛫_Bonus #2 - Detail Pages 🔎_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  It would be nice to be able to click on a book title on your homepage and view details about the book in a 
+    new page.
+
+
+🛫  Define a Flask route and create HTML pages that render detail pages for books and authors. Retrieve the relevant
+    data from the db. based on the provided author/book_id, then dynamically generate the content for each page.
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                        🛫_Bonus #3 - Delete an Author ❌_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Create a route called '/author/<int:author_id>/delete' which deletes a specific author from the db. when a POST request
+    comes in. Redirect the user to the homepage (the "Library") after a successful deletion, and display a success message
+    indicatin that the deletion of the author worked.
+
+
+🛫  Add a "Delete Author" button to 'home.html'. It should appear underneath of next to each author's name, and it should 
+    delete ALL books in your db. with Foreign Keys to that author. When you refresh the HTML page, those books should no 
+    longer appear in your digital library.
+
+
+🛫  Suppose you delete a row from a table that contains a column that is a Foreign Key to another table. In our case, 
+    this would happen when you delete a row from the 'Book' table because it contains a Foreign Key column to the 
+    'Author' table.
+
+
+🛫  You get to decide how to handle the data that exists in the table that contains the Foreign Key; in our example, you 
+    get to decide how to handle the author data when deleting a book. the choices vary a bit depending on the db. your're 
+    using, but generally, you can delete the author, protect the author from being deleted, or update the author value
+    to something else.
+
+
+🛫  this decision can be specified with SQLAlchemy using the 'cascade=all' feature. You can look this up in the 
+    'flask_sqlalchemy' and/or the 'SQLALchemy' documentation.
+
+    
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                        🛫_Bonus #4 - Book Ratings 🥇_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Add functionality so you can provide a rating (1-10) for each book in your library.
+
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+                                🛫_Bonus #5 - Suggest a Book to Read 💡_🛫 
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
+
+
+🛫  Create a page that uses Artificial Intelligence to generate a book recommendation based on the books in your library, 
+    and that optionally takes into account your book ratings (if you completed the Bonus #3 above).
+
+
+🛫  The Flask route should send all the books that the user has read to 'ChatGPT', and let 'ChatGPT' generate a recommendation.
+    You could find a free 'AI API' to use on
+
+            >>> RapidApi (look for any ChatGPT that allows a free plan with a hard limit).
+
+
+🛫 
+
+
+🛫 
+
+
+🛫 
+
+🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
 🛫__🛫 
 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
-🛫__🛫 
-🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
-🛫__🛫 
-🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 🛫 
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
-
-
-🛫 
 
 
 🛫 

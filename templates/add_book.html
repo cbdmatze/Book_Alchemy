@@ -3,16 +3,35 @@
 {% block content %}
 <h1>Add Book</h1>
 
+<!-- Display success or error messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <ul class="flashes">
+        {% for category, message in messages %}
+        <li class="alert alert-{{ category }}">{{ message }}</li>
+        {#% endfor %}
+    </ul>
+    {% endif %}
+{% endwith %}
+
 <form method="POST" action="{{ url_for('add_book') }}">
     {{ form.hidden_tag() }}
-    <div>
-        {{ form.title.label }}<br>
-        {{ form.title(size=32) }}<br>
-        {{ form.isbn.label }}<br>
-        {{ form.isbn(size=13) }}<br>
-        {{ form.author.label }}<br>
-        {{ form.author() }}<br>
-        {{ form.submit() }}
+    <div class="form-group">
+        {{ form.title.label(class="form-label") }}
+        {{ form.title(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.isbn.label(class="form-label") }}
+        {{ form.isbn(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.author.label(class="form-label") }}
+        {{ form.author(class="form-control") }}
+    </div>
+    <div class="form-group mt-3">
+        {{ form.submit(class="btn btn-primary") }}
     </div>
 </form>
+
+<a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Library</a>
 {% endblock %}

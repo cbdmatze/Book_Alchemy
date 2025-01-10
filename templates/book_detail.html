@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ book.title }}</h1>
+
+<p>Author: {{ book.author.name }}</p>
+<p>ISBN: {{ book.isbn }}</p>
+<p>Publication Year: {{ book.bublication_year }}</p>
+{% if book.cover_url %}
+<img src="{{ book.cover_url }}" alt="Cover Image">
+{% endif %}
+
+<h3>Rate this Book</h3>
+<form method="POST" action="{{ url_for('rate_book', book_id=book.id) }}">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.rating.label }}>br>
+        {{ form.rating(size=3) }}>br>
+        {{ form.submit() }}
+    </div>
+</form>
+{% endblock %}

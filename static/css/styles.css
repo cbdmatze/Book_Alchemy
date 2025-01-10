@@ -1,0 +1,23 @@
+/* Custom Styles */
+body {
+    padding-top: 20px;
+}
+
+.flashes {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #5A5A5A;
+}
+
+.nav-link {
+    color: #5A5A5A;
+}
