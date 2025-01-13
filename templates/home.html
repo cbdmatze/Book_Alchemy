@@ -4,24 +4,35 @@
 <h1>Books in Library</h1>
 
 <!-- Sort Links -->
- <div class="mb-3">
-    <a href="{{ url_for('home', sort_by='title') }}" class="btn btn-outline-primary">Sort by Title></a>
-    <a href="{{ url_for('home', sort_by='author') }}" class="btn btn-outline-primary">Sort by Author></a>
- </div>
+<div class="mb-3">
+    <a href="{{ url_for('home', sort_by='title') }}" class="btn btn-outline-primary">Sort by Title</a>
+    <a href="{{ url_for('home', sort_by='author') }}" class="btn btn-outline-primary">Sort by Author</a>
+</div>
 
- <!-- Book Links -->
-  <div class="row">
-    {% for book in books %}
-    <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <img src="{{ book.cover_url }}" alt="Cover Image" class="card-img-top" style="width:100px; height:auto;">
-            <div class="card-body">
-                <h5 class="card-title">{{ book.title }}</h5>
-                <p class="card-text">By {{ book.author.name }}</p>
-                <p class="card-text">ISBN: {{ book.isbn }}</p>
+<!-- Book List -->
+<div class="row">
+    {% if books %}
+        {% for book in books %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <!-- Conditionally display book cover if available -->
+                {% if book.cover_url %}
+                <img src="{{ book.cover_url }}" alt="Cover Image" class="card-img-top img-fluid">
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <p class="card-text">By {{ book.author.name }}</p>
+                    <p class="card-text">ISBN: {{ book.isbn }}</p>
+                </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
-  </div>
-  {% endblock %}
+        {% endfor %}
+    {% else %}
+    <p>No books available in the library.</p>
+    {% endif %}
+</div>
+
+<!-- Button to add new book -->
+<a href="{{ url_for('add_book') }}" class="btn btn-secondary mt-3">Add New Book</a>
+
+{% endblock %}

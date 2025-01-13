@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All Books</h1>
+
+<ul class="list-group">
+    {% for book in books %}
+        <li class="list-group-item">
+            <a href="{{ url_for('book_detail', book_id=book.id) }}" class="card-title">{{ book.title }}</a>
+            - {{ book.author.name if book.author else 'Unknown Author' }}
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Library</a>
+{% endblock %}

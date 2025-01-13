@@ -9,7 +9,7 @@
     <ul class="flashes">
         {% for category, message in messages %}
         <li class="alert alert-{{ category }}">{{ message }}</li>
-        {#% endfor %}
+        {% endfor %} <!-- Corrected line -->
     </ul>
     {% endif %}
 {% endwith %}
