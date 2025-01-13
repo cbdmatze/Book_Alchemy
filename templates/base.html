@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('home') }}">Library App</a>
@@ -26,11 +27,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('add_book') }}">Add Book</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('all_books') }}">All Books</a> <!-- Link to All Books -->
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
 
+    <!-- Flash Messages -->
+    <div class="container mt-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-dismissible fade show" role="alert">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}" role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Content -->
     <div class="container mt-5">
         {% block content %}{% endblock %}
     </div>

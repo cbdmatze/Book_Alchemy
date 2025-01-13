@@ -27,7 +27,7 @@ def add_author():
         new_author = Author(name=form.name.data, birth_date=form.birth_date.data)
         db.session.add(new_author)
         db.session.commit()
-        flash('Author added successfully!', 'success')
+        flash('Author added successfully!', 'success')  # Flash message for success
         return redirect(url_for('add_author'))
     return render_template('add_author.html', form=form)
 
@@ -47,8 +47,8 @@ def add_book():
         )
         db.session.add(new_book)
         db.session.commit()
-        flash('Book added successfully!', 'success')
-        return redirect(url_for('add_book'))
+        flash('Book added successfully!', 'success')  # Added flash message for success
+        return redirect(url_for('home'))  # Redirect to home to view all books
     return render_template('add_book.html', form=form)
 
 # Route to display books on the home page
@@ -59,6 +59,8 @@ def home():
         books = Book.query.join(Author).order_by(Author.name).all()
     else:
         books = Book.query.order_by(Book.title).all()
+    
+    # Add a condition to handle when there are no books
     return render_template('home.html', books=books)
 
 # Route to view book details
