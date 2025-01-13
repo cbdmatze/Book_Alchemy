@@ -15,7 +15,6 @@
         {% for book in books %}
         <div class="col-md-4 mb-4">
             <div class="card h-100">
-                <!-- Conditionally display book cover if available -->
                 {% if book.cover_url %}
                 <img src="{{ book.cover_url }}" alt="Cover Image" class="card-img-top img-fluid">
                 {% endif %}
@@ -34,5 +33,4 @@
 
 <!-- Button to add new book -->
 <a href="{{ url_for('add_book') }}" class="btn btn-secondary mt-3">Add New Book</a>
-
 {% endblock %}

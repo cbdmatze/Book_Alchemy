@@ -1,14 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_migrate import Migrate
+from dotenv import load_dotenv
 from data_models import db, Author, Book
 from forms import AddAuthorForm, AddBookForm, RateBookForm
 from utils import fetch_book_cover
+import os
 import openai
 
 app = Flask(__name__)
 app.config.from_object('config.Config')
 db.init_app(app)
 migrate = Migrate(app, db)
+
+# Load environment variables form a .env file
+load_dotenv()
+
+# Access environment variables
+api_key = os.getenv('OPENAI_API_KEY')
+print(api_key)
 
 # Route to add an author
 @app.route('/add_author', methods=['GET', 'POST'])
@@ -68,7 +77,7 @@ def rate_book(book_id):
         book.rating = form.rating.data
         db.session.commit()
         flash('Rating submitted!', 'success')
-    return redirect(url_for('home'))
+    return redirect(url_for('book_detail', book_id=book_id))  # Redirect to book details
 
 # Route to delete an author
 @app.route('/author/<int:author_id>/delete', methods=['POST'])
@@ -89,7 +98,7 @@ def recommend():
 
 def get_book_recommendation(book_titles):
     openai.api_key = app.config['OPENAI_API_KEY']
-    prompt = f"Based on the following books: {', '.join(book_titles)}, recommend a book."
+    prompt = f"Based on the following books: {', '.join(book_titles[:5])}, recommend a book."  # Limit titles to 5
     response = openai.Completion.create(engine="text-davinci-003", prompt=prompt, max_tokens=50)
     return response.choices[0].text.strip()
 

@@ -3,7 +3,6 @@
 {% block content %}
 <h1>Add Author</h1>
 
-
 <!-- Display success or error messages -->
 {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -30,5 +29,5 @@
     </div>
 </form>
 
-<a hreg?="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Library</a>
+<a href="{{ url_for('home') }}" class="btn btn-secondary mt-3">Back to Library</a>
 {% endblock %}
